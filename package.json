@@ -1,0 +1,26 @@
+{
+  "name": "react-native-material-design-searchbar",
+  "version": "1.0.4",
+  "description": "A React Native Material Design SearchBar",
+  "main": "SearchBar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ananddayalan/RNMDSearchBar.git"
+  },
+  "keywords": [
+    "react-native",
+    "Search",
+    "component",
+    "SearchBar",
+    "Material Design"
+  ],
+  "author": "Anand Dayalan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ananddayalan/RNMDSearchBar/issues"
+  },
+  "homepage": "https://github.com/ananddayalan/RNMDSearchBar"
+}
