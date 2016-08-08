@@ -64,7 +64,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    const { height, autoCorrect, onSearchChange, placeholder, padding } = this.props;
+    const { height, autoCorrect, returnKeyType, onSearchChange, placeholder, padding } = this.props;
     const TouchableWrapperPadding = padding !== undefined ? padding : 5;
     return (
       <View
@@ -97,6 +97,7 @@ class SearchBar extends React.Component {
           <TextInput
             autoCorrect={autoCorrect === true}
             ref={(c) => (this._textInput = c)}
+            returnKeyType={returnKeyType !== undefined ? returnKeyType : 'search'}
             onFocus={this._onFocus}
             onBlur={this._onBlur}
             onChange={onSearchChange !== undefined ? onSearchChange : undefined}

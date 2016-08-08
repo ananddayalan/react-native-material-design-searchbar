@@ -26,6 +26,7 @@ export default class ExampleComponent extends Component {
         placeholder={'Search...'}
         autoCorrect={false}
         padding={5}
+        returnKeyType={'search'}
       />
     );
   }

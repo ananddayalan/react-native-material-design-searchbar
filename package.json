@@ -1,6 +1,6 @@
 {
   "name": "react-native-material-design-searchbar",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A React Native Material Design SearchBar",
   "main": "SearchBar.js",
   "scripts": {
