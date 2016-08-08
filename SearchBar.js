@@ -29,6 +29,11 @@ class SearchBar extends React.Component {
 
   static propTypes = {
     height: PropTypes.number.isRequired,
+    autoCorrect: PropTypes.bool,
+    returnKeyType: PropTypes.string,
+    onSearchChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    padding: PropTypes.number,
   }
 
   constructor(props) {
