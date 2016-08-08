@@ -9,6 +9,8 @@ A React Native Material Design SearchBar
 
 Install the SearchBar from npm with `npm i -S react-native-material-design-searchbar`. Then, require it from your app's JavaScript files with `import SearchBar from 'react-native-material-design-searchbar'`.
 
+All props are optional except height.
+
 ```js
 import React, { Component } from 'react';
 import SearchBar from 'react-native-material-design-searchbar';
