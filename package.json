@@ -1,6 +1,6 @@
 {
   "name": "react-native-material-design-searchbar",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A React Native Material Design SearchBar",
   "main": "SearchBar.js",
   "scripts": {
@@ -17,6 +17,9 @@
     "SearchBar",
     "Material Design"
   ],
+  "dependencies": {
+    "react-native-vector-icons": "^2.0.3",
+  },
   "author": "Anand Dayalan",
   "license": "MIT",
   "bugs": {
