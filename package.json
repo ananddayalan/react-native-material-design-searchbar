@@ -18,7 +18,7 @@
     "Material Design"
   ],
   "dependencies": {
-    "react-native-vector-icons": "^2.0.3",
+    "react-native-vector-icons": "^2.0.3"
   },
   "author": "Anand Dayalan",
   "license": "MIT",
