@@ -48,6 +48,7 @@ class SearchBar extends React.Component {
 
   _onClose() {
     this._textInput.setNativeProps({ text: '' });
+    this.props.onSearchChange({ nativeEvent: { text : ''}});
     if (this.props.onClose) {
       this.props.onClose();
     }
