@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import dismissKeyboard from 'dismissKeyboard';
+import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard';
 
 const styles = StyleSheet.create({
   searchBar: {
