@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class SearchBar extends React.Component {
+export default class SearchBar extends React.Component {
 
   static propTypes = {
     height: PropTypes.number.isRequired,
@@ -34,6 +34,19 @@ class SearchBar extends React.Component {
     onSearchChange: PropTypes.func,
     placeholder: PropTypes.string,
     padding: PropTypes.number,
+  }
+
+  static defaultProps = {
+    onSearchChange: () => {},
+    inputStyle: {},
+    iconCloseName: "md-close",
+    iconSearchName: "md-search",
+    iconBackName: "md-arrow-back",
+    placeholder: "Search...",
+    returnKeyType: "search",
+    padding: 5,
+    placeholderColor: "#bdbdbd",
+    iconColor: "#737373"
   }
 
   constructor(props) {
@@ -66,49 +79,72 @@ class SearchBar extends React.Component {
     if (this.props.onBlur) {
       this.props.onBlur();
     }
-    dismissKeyboard();
+    this._dismissKeyboard();
+  }
+
+  _dismissKeyboard () {
+    dismissKeyboard()
   }
 
   render() {
-    const { height, autoCorrect, returnKeyType, onSearchChange, placeholder, padding } = this.props;
-    const TouchableWrapperPadding = padding !== undefined ? padding : 5;
+    const {
+      height,
+      autoCorrect,
+      returnKeyType,
+      onSearchChange,
+      placeholder,
+      padding,
+      inputStyle,
+      iconColor,
+      iconBackName,
+      iconSearchName,
+      iconCloseName,
+      placeholderColor
+    } = this.props;
+
+    let { iconSize } = this.props
+
+    iconSize = typeof iconSize !== 'undefined' ? iconSize : height * 0.5
+
     return (
       <View
-        onStartShouldSetResponder={() => dismissKeyboard()}
-        style={{ padding: TouchableWrapperPadding }}
+        onStartShouldSetResponder={this._dismissKeyboard}
+        style={{padding: padding }}
       >
         <View
           style={
-            [styles.searchBar,
+            [
+              styles.searchBar,
               {
                 height: height + 10,
                 paddingLeft: height * 0.25,
               },
+              inputStyle
             ]
           }
         >
           {this.state.isOnFocus ?
-            <TouchableOpacity onPress={() => dismissKeyboard()}>
+            <TouchableOpacity onPress={this._dismissKeyboard}>
               <Icon
-                name={"md-arrow-back"} size={height * 0.5}
-                color="#737373"
+                name={iconBackName} size={height * 0.5}
+                color={iconColor}
               />
             </TouchableOpacity>
           :
             <Icon
-              name={"md-search"} size={height * 0.5}
-              color="#737373"
+              name={iconSearchName} size={height * 0.5}
+              color={iconColor}
             />
           }
           <TextInput
             autoCorrect={autoCorrect === true}
             ref={(c) => (this._textInput = c)}
-            returnKeyType={returnKeyType !== undefined ? returnKeyType : 'search'}
+            returnKeyType={returnKeyType}
             onFocus={this._onFocus}
             onBlur={this._onBlur}
-            onChange={onSearchChange !== undefined ? onSearchChange : undefined}
-            placeholder={placeholder !== undefined ? placeholder : 'Search...'}
-            placeholderTextColor="#bdbdbd"
+            onChange={onSearchChange}
+            placeholder={placeholder}
+            placeholderTextColor={placeholderColor}
             style={
               [styles.searchBarInput,
                 {
@@ -121,9 +157,9 @@ class SearchBar extends React.Component {
           {this.state.isOnFocus ?
             <TouchableOpacity onPress={this._onClose}>
               <Icon
-                style={{ paddingRight: height * 0.5 }}
-                name={"md-close"} size={height * 0.5}
-                color="#737373"
+                style={{paddingRight: height * 0.5 }}
+                name={iconCloseName} size={iconSize}
+                color={iconColor}
               />
             </TouchableOpacity>
           : null
@@ -133,5 +169,3 @@ class SearchBar extends React.Component {
     );
   }
 }
-
-module.exports = SearchBar;
