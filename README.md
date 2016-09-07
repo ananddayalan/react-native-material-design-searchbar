@@ -45,7 +45,7 @@ export default class ExampleComponent extends Component {
 - `placeholderColor`: Optional string, use it to define a different placeholder color, default is `#bdbdbd`
 - `returnKeyType`: Optional string, use it to customize the return key type
 - `padding`: Optional string, use it to define a different padding size, default is `5`
-- `inputStyle`: Optional string, use it to pass your style to the `TextInput
+- `inputStyle`: Optional string, use it to pass your style to the `TextInput`
 
 
 The React packager will include the SearchBar component in your app's JS package and make it available for your app to use.
