@@ -34,6 +34,12 @@ export default class SearchBar extends React.Component {
     onSearchChange: PropTypes.func,
     placeholder: PropTypes.string,
     padding: PropTypes.number,
+    inputStyle: PropTypes.object,
+    iconCloseName: PropTypes.string,
+    iconSearchName: PropTypes.string,
+    iconBackName: PropTypes.string,
+    placeholderColor: PropTypes.string,
+    iconColor: PropTypes.string
   }
 
   static defaultProps = {
