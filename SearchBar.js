@@ -148,7 +148,7 @@ export default class SearchBar extends React.Component {
             returnKeyType={returnKeyType}
             onFocus={this._onFocus}
             onBlur={this._onBlur}
-            onChange={onSearchChange}
+            onChangeText={onSearchChange}
             placeholder={placeholder}
             placeholderTextColor={placeholderColor}
             style={
