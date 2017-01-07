@@ -151,6 +151,7 @@ export default class SearchBar extends React.Component {
             onChangeText={onSearchChange}
             placeholder={placeholder}
             placeholderTextColor={placeholderColor}
+            underlineColorAndroid="transparent"
             style={
               [styles.searchBarInput,
                 {
