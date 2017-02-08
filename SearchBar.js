@@ -39,7 +39,8 @@ export default class SearchBar extends React.Component {
     iconSearchName: PropTypes.string,
     iconBackName: PropTypes.string,
     placeholderColor: PropTypes.string,
-    iconColor: PropTypes.string
+    iconColor: PropTypes.string,
+    textStyle: PropTypes.object
   }
 
   static defaultProps = {
@@ -52,7 +53,8 @@ export default class SearchBar extends React.Component {
     returnKeyType: "search",
     padding: 5,
     placeholderColor: "#bdbdbd",
-    iconColor: "#737373"
+    iconColor: "#737373",
+    textStyle: {}
   }
 
   constructor(props) {
@@ -105,7 +107,8 @@ export default class SearchBar extends React.Component {
       iconBackName,
       iconSearchName,
       iconCloseName,
-      placeholderColor
+      placeholderColor,
+      textStyle
     } = this.props;
 
     let { iconSize } = this.props
@@ -158,6 +161,7 @@ export default class SearchBar extends React.Component {
                   paddingLeft: height * 0.5,
                   fontSize: height * 0.4,
                 },
+                textStyle
               ]
             }
           />
