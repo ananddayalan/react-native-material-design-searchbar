@@ -8,7 +8,7 @@ A React Native Material Design SearchBar
 # Setup
 
 Install the SearchBar from npm with `npm i -S react-native-material-design-searchbar`. Then, require it from your app's JavaScript files with `import SearchBar from 'react-native-material-design-searchbar'`.
-This library depends on [react-native-vector](https://github.com/oblador/react-native-vector-icons). Please link it by following their installation guide.
+This library depends on [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons). Please link it by following their installation guide.
 
 # Usage
 
