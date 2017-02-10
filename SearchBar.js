@@ -32,6 +32,8 @@ export default class SearchBar extends React.Component {
     autoCorrect: PropTypes.bool,
     returnKeyType: PropTypes.string,
     onSearchChange: PropTypes.func,
+    onEndEditing: PropTypes.func,
+    onSubmitEditing: PropTypes.func,
     placeholder: PropTypes.string,
     padding: PropTypes.number,
     inputStyle: PropTypes.object,
@@ -39,11 +41,14 @@ export default class SearchBar extends React.Component {
     iconSearchName: PropTypes.string,
     iconBackName: PropTypes.string,
     placeholderColor: PropTypes.string,
-    iconColor: PropTypes.string
+    iconColor: PropTypes.string,
+    textStyle: PropTypes.object
   }
 
   static defaultProps = {
     onSearchChange: () => {},
+    onEndEditing: () => {},
+    onSubmitEditing: () => {},
     inputStyle: {},
     iconCloseName: "md-close",
     iconSearchName: "md-search",
@@ -52,7 +57,8 @@ export default class SearchBar extends React.Component {
     returnKeyType: "search",
     padding: 5,
     placeholderColor: "#bdbdbd",
-    iconColor: "#737373"
+    iconColor: "#737373",
+    textStyle: {}
   }
 
   constructor(props) {
@@ -105,7 +111,8 @@ export default class SearchBar extends React.Component {
       iconBackName,
       iconSearchName,
       iconCloseName,
-      placeholderColor
+      placeholderColor,
+      textStyle
     } = this.props;
 
     let { iconSize } = this.props
@@ -149,6 +156,8 @@ export default class SearchBar extends React.Component {
             onFocus={this._onFocus}
             onBlur={this._onBlur}
             onChangeText={onSearchChange}
+            onEndEditing={this.props.onEndEditing}
+            onSubmitEditing={this.props.onSubmitEditing}
             placeholder={placeholder}
             placeholderTextColor={placeholderColor}
             underlineColorAndroid="transparent"
@@ -158,6 +167,7 @@ export default class SearchBar extends React.Component {
                   paddingLeft: height * 0.5,
                   fontSize: height * 0.4,
                 },
+                textStyle
               ]
             }
           />
