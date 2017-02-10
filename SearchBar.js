@@ -33,6 +33,7 @@ export default class SearchBar extends React.Component {
     returnKeyType: PropTypes.string,
     onSearchChange: PropTypes.func,
     onEndEditing: PropTypes.func,
+    onSubmitEditing: PropTypes.func,
     placeholder: PropTypes.string,
     padding: PropTypes.number,
     inputStyle: PropTypes.object,
@@ -47,6 +48,7 @@ export default class SearchBar extends React.Component {
   static defaultProps = {
     onSearchChange: () => {},
     onEndEditing: () => {},
+    onSubmitEditing: () => {},
     inputStyle: {},
     iconCloseName: "md-close",
     iconSearchName: "md-search",
@@ -155,6 +157,7 @@ export default class SearchBar extends React.Component {
             onBlur={this._onBlur}
             onChangeText={onSearchChange}
             onEndEditing={this.props.onEndEditing}
+            onSubmitEditing={this.props.onSubmitEditing}
             placeholder={placeholder}
             placeholderTextColor={placeholderColor}
             underlineColorAndroid="transparent"
