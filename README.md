@@ -49,6 +49,7 @@ export default class ExampleComponent extends Component {
 - `returnKeyType`: Optional string, use it to customize the return key type
 - `padding`: Optional string, use it to define a different padding size, default is `5`
 - `inputStyle`: Optional string, use it to pass your style to the `TextInput`
+- `inputProps`: Optional object, use it to pass additional props to the `TextInput`, for example `{autoFocus: true}`
 
 
 The React packager will include the SearchBar component in your app's JS package and make it available for your app to use.
