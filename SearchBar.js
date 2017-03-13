@@ -42,7 +42,8 @@ export default class SearchBar extends React.Component {
     iconBackName: PropTypes.string,
     placeholderColor: PropTypes.string,
     iconColor: PropTypes.string,
-    textStyle: PropTypes.object
+    textStyle: PropTypes.object,
+    inputProps: PropTypes.object
   }
 
   static defaultProps = {
@@ -170,6 +171,7 @@ export default class SearchBar extends React.Component {
                 textStyle
               ]
             }
+            {...this.props.inputProps}
           />
           {this.state.isOnFocus ?
             <TouchableOpacity onPress={this._onClose}>
