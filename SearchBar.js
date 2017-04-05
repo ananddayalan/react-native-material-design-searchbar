@@ -116,9 +116,10 @@ export default class SearchBar extends React.Component {
       textStyle
     } = this.props;
 
-    let { iconSize } = this.props
-
+    let { iconSize, iconPadding } = this.props
+    
     iconSize = typeof iconSize !== 'undefined' ? iconSize : height * 0.5
+    iconPadding = typeof iconPadding !== 'undefined' ? iconPadding : height * 0.25
 
     return (
       <View
@@ -130,8 +131,8 @@ export default class SearchBar extends React.Component {
             [
               styles.searchBar,
               {
-                height: height + 10,
-                paddingLeft: height * 0.25,
+                height: height,
+                paddingLeft: iconPadding
               },
               inputStyle
             ]
@@ -140,13 +141,16 @@ export default class SearchBar extends React.Component {
           {this.state.isOnFocus ?
             <TouchableOpacity onPress={this._dismissKeyboard}>
               <Icon
-                name={iconBackName} size={height * 0.5}
+                name={iconBackName}
+                size={iconSize}
+                paddingLeft={iconPadding}
                 color={iconColor}
               />
             </TouchableOpacity>
           :
             <Icon
-              name={iconSearchName} size={height * 0.5}
+              name={iconSearchName}size={iconSize}
+              paddingLeft={iconPadding}
               color={iconColor}
             />
           }
@@ -165,7 +169,7 @@ export default class SearchBar extends React.Component {
             style={
               [styles.searchBarInput,
                 {
-                  paddingLeft: height * 0.5,
+                  paddingLeft: iconPadding,
                   fontSize: height * 0.4,
                 },
                 textStyle
@@ -176,7 +180,7 @@ export default class SearchBar extends React.Component {
           {this.state.isOnFocus ?
             <TouchableOpacity onPress={this._onClose}>
               <Icon
-                style={{paddingRight: height * 0.5 }}
+                style={{paddingRight: iconPadding }}
                 name={iconCloseName} size={iconSize}
                 color={iconColor}
               />
