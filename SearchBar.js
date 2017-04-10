@@ -99,6 +99,13 @@ export default class SearchBar extends React.Component {
     dismissKeyboard()
   }
 
+  setText(text, focus) {
+    this._textInput.setNativeProps({ text: text });
+    if (focus) {
+      this._onFocus();
+    }
+  }
+
   render() {
     const {
       height,
