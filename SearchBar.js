@@ -46,6 +46,8 @@ export default class SearchBar extends React.Component {
     textStyle: PropTypes.object,
     inputProps: PropTypes.object,
     alwaysShowBackButton: PropTypes.bool,
+    activityIndicator: PropTypes.bool,
+    onBackPress: PropTypes.func,
   };
 
   static defaultProps = {
@@ -63,6 +65,7 @@ export default class SearchBar extends React.Component {
     iconColor: '#737373',
     textStyle: {},
     alwaysShowBackButton: false,
+    activityIndicator: true,
   };
 
   constructor(props) {
@@ -102,6 +105,13 @@ export default class SearchBar extends React.Component {
   _dismissKeyboard() {
     dismissKeyboard();
   }
+   
+  _backPressed() {
+    dismissKeyboard()
+    if(this.props.onBackPress) {
+      this.props.onBackPress()
+    }
+  }
 
   render() {
     const {
@@ -140,7 +150,7 @@ export default class SearchBar extends React.Component {
           ]}
         >
           {this.state.isOnFocus || this.props.alwaysShowBackButton
-            ? <TouchableOpacity onPress={this._dismissKeyboard}>
+            ? <TouchableOpacity onPress={this._backPressed.bind(this)}>
                 <Icon
                   name={iconBackName}
                   size={height * 0.5}
@@ -174,11 +184,9 @@ export default class SearchBar extends React.Component {
             ]}
             {...this.props.inputProps}
           />
-          {this.state.wait
+          {this.state.wait && this.props.activityIndicator
             ? <ActivityIndicator size={'large'} />
-            : <Text>
-                this is result if  anybody search anything without press Enter
-              </Text>}
+            : null}
           {this.state.isOnFocus
             ? <TouchableOpacity onPress={this._onClose}>
                 <Icon
