@@ -184,9 +184,7 @@ export default class SearchBar extends React.Component {
           />
           {this.state.wait && this.props.activityIndicator
             ? <ActivityIndicator size={'large'} />
-            : <Text>
-                this is result if  anybody search anything without press Enter
-              </Text>}
+            : null}
           {this.state.isOnFocus
             ? <TouchableOpacity onPress={this._onClose}>
                 <Icon
