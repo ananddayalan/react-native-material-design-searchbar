@@ -45,6 +45,7 @@ export default class SearchBar extends React.Component {
     iconColor: PropTypes.string,
     textStyle: PropTypes.object,
     inputProps: PropTypes.object,
+    activityIndicator: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -61,6 +62,7 @@ export default class SearchBar extends React.Component {
     placeholderColor: '#bdbdbd',
     iconColor: '#737373',
     textStyle: {},
+    activityIndicator: true,
   };
 
   constructor(props) {
@@ -172,7 +174,7 @@ export default class SearchBar extends React.Component {
             ]}
             {...this.props.inputProps}
           />
-          {this.state.wait
+          {this.state.wait && this.props.activityIndicator
             ? <ActivityIndicator size={'large'} />
             : <Text>
                 this is result if  anybody search anything without press Enter
