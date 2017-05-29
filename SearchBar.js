@@ -45,6 +45,7 @@ export default class SearchBar extends React.Component {
     iconColor: PropTypes.string,
     textStyle: PropTypes.object,
     inputProps: PropTypes.object,
+    alwaysShowBackButton: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -61,6 +62,7 @@ export default class SearchBar extends React.Component {
     placeholderColor: '#bdbdbd',
     iconColor: '#737373',
     textStyle: {},
+    alwaysShowBackButton: false,
   };
 
   constructor(props) {
@@ -137,7 +139,7 @@ export default class SearchBar extends React.Component {
             inputStyle,
           ]}
         >
-          {this.state.isOnFocus
+          {this.state.isOnFocus || this.props.alwaysShowBackButton
             ? <TouchableOpacity onPress={this._dismissKeyboard}>
                 <Icon
                   name={iconBackName}
