@@ -109,6 +109,13 @@ export default class SearchBar extends React.Component {
     }
   }
 
+  setText(text, focus) {
+    this._textInput.setNativeProps({ text: text });
+    if (focus) {
+      this._onFocus();
+    }
+  }
+
   render() {
     const {
       height,
@@ -126,9 +133,10 @@ export default class SearchBar extends React.Component {
       textStyle,
     } = this.props;
 
-    let {iconSize} = this.props;
-
-    iconSize = typeof iconSize !== 'undefined' ? iconSize : height * 0.5;
+    let { iconSize, iconPadding } = this.props
+    
+    iconSize = typeof iconSize !== 'undefined' ? iconSize : height * 0.5
+    iconPadding = typeof iconPadding !== 'undefined' ? iconPadding : height * 0.25
 
     return (
       <View
@@ -136,14 +144,16 @@ export default class SearchBar extends React.Component {
         style={{padding: padding}}
       >
         <View
-          style={[
-            styles.searchBar,
-            {
-              height: height + 10,
-              paddingLeft: height * 0.25,
-            },
-            inputStyle,
-          ]}
+          style={
+            [
+              styles.searchBar,
+              {
+                height: height,
+                paddingLeft: iconPadding
+              },
+              inputStyle
+            ]
+          }
         >
           {this.state.isOnFocus
             ? <TouchableOpacity onPress={this._backPressed.bind(this)}>
@@ -157,7 +167,15 @@ export default class SearchBar extends React.Component {
                 name={iconSearchName}
                 size={height * 0.5}
                 color={iconColor}
-              />}
+              />
+            </TouchableOpacity>
+          :
+            <Icon
+              name={iconSearchName}size={iconSize}
+              paddingLeft={iconPadding}
+              color={iconColor}
+            />
+          }
           <TextInput
             autoCorrect={autoCorrect === true}
             ref={c => this._textInput = c}
@@ -170,31 +188,27 @@ export default class SearchBar extends React.Component {
             placeholder={placeholder}
             placeholderTextColor={placeholderColor}
             underlineColorAndroid="transparent"
-            style={[
-              styles.searchBarInput,
-              {
-                paddingLeft: height * 0.5,
-                fontSize: height * 0.4,
-              },
-              textStyle,
-            ]}
+            style={
+              [styles.searchBarInput,
+                {
+                  paddingLeft: iconPadding,
+                  fontSize: height * 0.4,
+                },
+                textStyle
+              ]
+            }
             {...this.props.inputProps}
           />
-          {this.state.wait
-            ? <ActivityIndicator size={'large'} />
-            : <Text>
-                this is result if  anybody search anything without press Enter
-              </Text>}
-          {this.state.isOnFocus
-            ? <TouchableOpacity onPress={this._onClose}>
-                <Icon
-                  style={{paddingRight: height * 0.5}}
-                  name={iconCloseName}
-                  size={iconSize}
-                  color={iconColor}
-                />
-              </TouchableOpacity>
-            : null}
+          {this.state.isOnFocus ?
+            <TouchableOpacity onPress={this._onClose}>
+              <Icon
+                style={{paddingRight: iconPadding }}
+                name={iconCloseName} size={iconSize}
+                color={iconColor}
+              />
+            </TouchableOpacity>
+          : null
+          }
         </View>
       </View>
     );

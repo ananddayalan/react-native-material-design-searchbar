@@ -22,7 +22,7 @@ export default class ExampleComponent extends Component {
   render() {
     return (
       <SearchBar
-        onSearchChange={() => console.log('On Focus')}
+        onSearchChange={() => console.log('On Search Change')}
         height={50}
         onFocus={() => console.log('On Focus')}
         onBlur={() => console.log('On Blur')}
