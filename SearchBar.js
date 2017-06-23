@@ -45,6 +45,7 @@ export default class SearchBar extends React.Component {
     iconColor: PropTypes.string,
     textStyle: PropTypes.object,
     inputProps: PropTypes.object,
+    onBackPress: PropTypes.func,
   };
 
   static defaultProps = {
@@ -100,6 +101,13 @@ export default class SearchBar extends React.Component {
   _dismissKeyboard() {
     dismissKeyboard();
   }
+   
+  _backPressed() {
+    dismissKeyboard()
+    if(this.props.onBackPress) {
+      this.props.onBackPress()
+    }
+  }
 
   setText(text, focus) {
     this._textInput.setNativeProps({ text: text });
@@ -147,12 +155,17 @@ export default class SearchBar extends React.Component {
             ]
           }
         >
-          {this.state.isOnFocus ?
-            <TouchableOpacity onPress={this._dismissKeyboard}>
-              <Icon
-                name={iconBackName}
-                size={iconSize}
-                paddingLeft={iconPadding}
+          {this.state.isOnFocus
+            ? <TouchableOpacity onPress={this._backPressed.bind(this)}>
+                <Icon
+                  name={iconBackName}
+                  size={height * 0.5}
+                  color={iconColor}
+                />
+              </TouchableOpacity>
+            : <Icon
+                name={iconSearchName}
+                size={height * 0.5}
                 color={iconColor}
               />
             </TouchableOpacity>
