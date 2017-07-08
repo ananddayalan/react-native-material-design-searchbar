@@ -168,13 +168,6 @@ export default class SearchBar extends React.Component {
                 size={height * 0.5}
                 color={iconColor}
               />
-            </TouchableOpacity>
-          :
-            <Icon
-              name={iconSearchName}size={iconSize}
-              paddingLeft={iconPadding}
-              color={iconColor}
-            />
           }
           <TextInput
             autoCorrect={autoCorrect === true}
