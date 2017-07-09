@@ -41,6 +41,7 @@ export default class ExampleComponent extends Component {
 
 - `onSearchChange`: Callback on search change
 - `onBackPress`: Optional function, Callback on back icon pressed
+- `alwaysShowBackButton`: Optional bool, use if you want to always show the back button instead of search, default is `false`
 - `iconCloseName`: Optional string, use it to customize the close icon
 - `iconSearchName`: Optional string, use it to customize the search icon
 - `iconBackName`: Optional string, use it to customize the back icon
