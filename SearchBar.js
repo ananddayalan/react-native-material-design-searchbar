@@ -80,7 +80,7 @@ export default class SearchBar extends React.Component {
 
   _onClose() {
     this._textInput.setNativeProps({text: ''});
-    this.props.onSearchChange({nativeEvent: {text: ''}});
+    this.props.onSearchChange('');
     if (this.props.onClose) {
       this.props.onClose();
     }
@@ -104,7 +104,7 @@ export default class SearchBar extends React.Component {
   _dismissKeyboard() {
     dismissKeyboard();
   }
-   
+
   _backPressed() {
     dismissKeyboard()
     if(this.props.onBackPress) {
@@ -137,7 +137,7 @@ export default class SearchBar extends React.Component {
     } = this.props;
 
     let { iconSize, iconPadding } = this.props
-    
+
     iconSize = typeof iconSize !== 'undefined' ? iconSize : height * 0.5
     iconPadding = typeof iconPadding !== 'undefined' ? iconPadding : height * 0.25
 
