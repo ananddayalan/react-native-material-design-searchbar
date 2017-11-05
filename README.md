@@ -45,6 +45,9 @@ export default class ExampleComponent extends Component {
 - `iconCloseName`: Optional string, use it to customize the close icon
 - `iconSearchName`: Optional string, use it to customize the search icon
 - `iconBackName`: Optional string, use it to customize the back icon
+- `iconCloseComponent`: Optional object, custom component for the close icon (overrides iconCloseName)
+- `iconSearchComponent`: Optional object, custom component for the search icon (overrides iconSearchName)
+- `iconBackComponent`: Optional object, custom component for the back icon (overrides iconBackName)
 - `iconColor`: Optional string, use it to define a different padding size, default is `#737373`
 - `placeholder`: Optional string, use it to customize the placeholder text, default is `eSearch...`
 - `placeholderColor`: Optional string, use it to define a different placeholder color, default is `#bdbdbd`
