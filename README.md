@@ -1,7 +1,7 @@
 # react-native-material-design-searchbar
 A React Native Material Design SearchBar
 
-<img src='https://i1.wp.com/reactscript.com/wp-content/uploads/2016/12/React-Native-Material-Design-Searchbar-1.png' height='400'>
+<img src='https://i1.wp.com/reactscript.com/wp-content/uploads/2016/12/React-Native-Material-Design-Searchbar-1.png' height='200'>
 
 
 # Setup
