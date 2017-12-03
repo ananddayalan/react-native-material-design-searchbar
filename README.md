@@ -44,13 +44,17 @@ export default class ExampleComponent extends Component {
 - `iconCloseName`: Optional string, use it to customize the close icon
 - `iconSearchName`: Optional string, use it to customize the search icon
 - `iconBackName`: Optional string, use it to customize the back icon
+- `iconCloseComponent`: Optional object, custom component for the close icon (overrides iconCloseName)
+- `iconSearchComponent`: Optional object, custom component for the search icon (overrides iconSearchName)
+- `iconBackComponent`: Optional object, custom component for the back icon (overrides iconBackName)
 - `iconColor`: Optional string, use it to define a different padding size, default is `#737373`
 - `placeholder`: Optional string, use it to customize the placeholder text, default is `eSearch...`
 - `placeholderColor`: Optional string, use it to define a different placeholder color, default is `#bdbdbd`
 - `returnKeyType`: Optional string, use it to customize the return key type
 - `padding`: Optional string, use it to define a different padding size, default is `5`
-- `inputStyle`: Optional string, use it to pass your style to the `TextInput`
+- `inputStyle`: Optional string, use it to pass your style to the containing `View`
 - `inputProps`: Optional object, use it to pass additional props to the `TextInput`, for example `{autoFocus: true}`
+- `textStyle`: Optional string, use it to pass your style to the `TextInput`
 
 
 The React packager will include the SearchBar component in your app's JS package and make it available for your app to use.

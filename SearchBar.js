@@ -38,13 +38,16 @@ export default class SearchBar extends React.Component {
     onSubmitEditing: PropTypes.func,
     placeholder: PropTypes.string,
     padding: PropTypes.number,
-    inputStyle: PropTypes.object,
+    inputStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    iconCloseComponent: PropTypes.object,
+    iconSearchComponent: PropTypes.object,
+    iconBackComponent: PropTypes.object,
     iconCloseName: PropTypes.string,
     iconSearchName: PropTypes.string,
     iconBackName: PropTypes.string,
     placeholderColor: PropTypes.string,
     iconColor: PropTypes.string,
-    textStyle: PropTypes.object,
+    textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     inputProps: PropTypes.object,
     onBackPress: PropTypes.func,
     alwaysShowBackButton: PropTypes.bool,
@@ -129,6 +132,9 @@ export default class SearchBar extends React.Component {
       padding,
       inputStyle,
       iconColor,
+      iconCloseComponent,
+      iconSearchComponent,
+      iconBackComponent,
       iconBackName,
       iconSearchName,
       iconCloseName,
@@ -160,17 +166,26 @@ export default class SearchBar extends React.Component {
         >
           {this.state.isOnFocus || this.props.alwaysShowBackButton
             ? <TouchableOpacity onPress={this._backPressed.bind(this)}>
-                <Icon
-                  name={iconBackName}
-                  size={height * 0.5}
-                  color={iconColor}
-                />
+                { iconBackComponent ?
+                  iconBackComponent
+                  :
+                  <Icon
+                    name={iconBackName}
+                    size={height * 0.5}
+                    color={iconColor}
+                  />
+                }
               </TouchableOpacity>
-            : <Icon
+            :
+            ( iconSearchComponent ?
+              iconSearchComponent
+              :
+              <Icon
                 name={iconSearchName}
                 size={height * 0.5}
                 color={iconColor}
               />
+            )
           }
           <TextInput
             autoCorrect={autoCorrect === true}
@@ -197,11 +212,15 @@ export default class SearchBar extends React.Component {
           />
           {this.state.isOnFocus ?
             <TouchableOpacity onPress={this._onClose}>
-              <Icon
-                style={{paddingRight: iconPadding }}
-                name={iconCloseName} size={iconSize}
-                color={iconColor}
-              />
+              { iconCloseComponent ?
+                iconCloseComponent
+                :
+                <Icon
+                  style={{paddingRight: iconPadding }}
+                  name={iconCloseName} size={iconSize}
+                  color={iconColor}
+                />
+              }
             </TouchableOpacity>
           : null
           }
