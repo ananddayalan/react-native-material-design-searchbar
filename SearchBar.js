@@ -101,11 +101,11 @@ export default class SearchBar extends React.Component {
     if (this.props.onBlur) {
       this.props.onBlur();
     }
-    Keyboard.dismissKeyboard();
+    Keyboard.dismiss();
   }
 
   _backPressed() {
-    Keyboard.dismissKeyboard()
+    Keyboard.dismiss()
     if(this.props.onBackPress) {
       this.props.onBackPress()
     }
@@ -145,7 +145,7 @@ export default class SearchBar extends React.Component {
 
     return (
       <View
-        onStartShouldSetResponder={Keyboard.dismissKeyboard}
+        onStartShouldSetResponder={Keyboard.dismiss}
         style={{padding: padding}}
       >
         <View
