@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Text,
+  Keyboard,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard';
 
 const styles = StyleSheet.create({
   searchBar: {
@@ -101,15 +101,11 @@ export default class SearchBar extends React.Component {
     if (this.props.onBlur) {
       this.props.onBlur();
     }
-    this._dismissKeyboard();
-  }
-
-  _dismissKeyboard() {
-    dismissKeyboard();
+    Keyboard.dismissKeyboard();
   }
 
   _backPressed() {
-    dismissKeyboard()
+    Keyboard.dismissKeyboard()
     if(this.props.onBackPress) {
       this.props.onBackPress()
     }
@@ -149,7 +145,7 @@ export default class SearchBar extends React.Component {
 
     return (
       <View
-        onStartShouldSetResponder={this._dismissKeyboard}
+        onStartShouldSetResponder={Keyboard.dismissKeyboard}
         style={{padding: padding}}
       >
         <View
