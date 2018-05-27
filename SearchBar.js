@@ -68,6 +68,7 @@ export default class SearchBar extends React.Component {
     iconColor: '#737373',
     textStyle: {},
     alwaysShowBackButton: false,
+    searchValue: '',
   };
 
   constructor(props) {
@@ -75,18 +76,22 @@ export default class SearchBar extends React.Component {
     this.state = {
       isOnFocus: false,
       wait: true,
+      searchValue: props.searchValue,
     };
+    this._onSearchChange = this._onSearchChange.bind(this);
+    this._onClear = this._onClear.bind(this);
     this._onFocus = this._onFocus.bind(this);
     this._onBlur = this._onBlur.bind(this);
-    this._onClose = this._onClose.bind(this);
   }
 
-  _onClose() {
-    this._textInput.setNativeProps({text: ''});
-    this.props.onSearchChange('');
-    if (this.props.onClose) {
-      this.props.onClose();
-    }
+  _onSearchChange(searchValue) {
+    this.setState({searchValue});
+    this.props.onSearchChange && this.props.onSearchChange(searchValue);
+  }
+
+  _onClear() {
+    this._onSearchChange('');
+    this.props.onClear && this.props.onClear();
   }
 
   _onFocus() {
@@ -123,7 +128,6 @@ export default class SearchBar extends React.Component {
       height,
       autoCorrect,
       returnKeyType,
-      onSearchChange,
       placeholder,
       padding,
       inputStyle,
@@ -184,12 +188,13 @@ export default class SearchBar extends React.Component {
             )
           }
           <TextInput
+            value={this.state.searchValue}
             autoCorrect={autoCorrect === true}
             ref={c => this._textInput = c}
             returnKeyType={returnKeyType}
             onFocus={this._onFocus}
             onBlur={this._onBlur}
-            onChangeText={onSearchChange}
+            onChangeText={this._onSearchChange}
             onEndEditing={this.props.onEndEditing}
             onSubmitEditing={this.props.onSubmitEditing}
             placeholder={placeholder}
@@ -207,7 +212,7 @@ export default class SearchBar extends React.Component {
             {...this.props.inputProps}
           />
           {this.state.isOnFocus ?
-            <TouchableOpacity onPress={this._onClose}>
+            <TouchableOpacity onPress={this._onClear}>
               { iconCloseComponent ?
                 iconCloseComponent
                 :

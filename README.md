@@ -40,6 +40,8 @@ export default class ExampleComponent extends Component {
 # Available Props
 
 - `onSearchChange`: Callback on search change
+- `onClear`: Callback when the 'X' button is pressed. This also calls `onSearchChange` with an empty string.
+- `searchValue`: Initializes the input field. Changing this prop does not change the input value.
 - `onBackPress`: Optional function, Callback on back icon pressed
 - `alwaysShowBackButton`: Optional bool, use if you want to always show the back button instead of search, default is `false`
 - `iconCloseName`: Optional string, use it to customize the close icon
